@@ -59,15 +59,15 @@
     <script>
         // ----- БАЗА ДАННЫХ -----
         function getDemoRecipes() {
-            return [
-                { id: 1, title: "Паста Карбонара", description: "Классическая итальянская паста с беконом и сливочным соусом.", image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop", time: "25 мин", difficulty: "medium", difficultyText: "Средняя", ingredients: "Спагетти 200г\nБекон 100г\nЯйца 2шт\nПармезан 50г\nЧерный перец", instructions: "Отварите спагетти...", type: "demo" },
-                { id: 2, title: "Тирамису", description: "Нежный итальянский десерт с маскарпоне и кофе.", image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop", time: "40 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Маскарпоне 250г\nПеченье Савоярди\nКофе", instructions: "Смешайте...", type: "demo" },
-                { id: 3, title: "Рамен с курицей", description: "Японский суп с лапшой, курицей и яйцом.", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop", time: "35 мин", difficulty: "hard", difficultyText: "Сложная", ingredients: "Лапша, курица, яйцо, нори", instructions: "Сварите бульон...", type: "demo" },
-                { id: 4, title: "Салат Цезарь", description: "Хрустящий салат с курицей и пармезаном.", image: "https://images.unsplash.com/photo-1550304943-4f24f54dd6c4?w=400&h=300&fit=crop", time: "15 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Курица, салат, пармезан, сухарики", instructions: "Обжарьте курицу...", type: "demo" },
-                { id: 5, title: "Пицца Маргарита", description: "Томаты, моцарелла, базилик.", image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop", time: "30 мин", difficulty: "medium", difficultyText: "Средняя", ingredients: "Тесто, томатный соус, моцарелла", instructions: "Раскатайте...", type: "demo" },
-                { id: 6, title: "Борщ", description: "Насыщенный суп со свеклой и мясом.", image: "https://images.unsplash.com/photo-1588038904885-6b2b5f5a34d0?w=400&h=300&fit=crop", time: "60 мин", difficulty: "hard", difficultyText: "Сложная", ingredients: "Свекла, капуста, говядина", instructions: "Сварите бульон...", type: "demo" },
-                { id: 7, title: "Оладьи пышные", description: "Быстрые оладьи на кефире.", image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=400&h=300&fit=crop", time: "20 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Кефир, мука, яйцо", instructions: "Смешайте, жарьте...", type: "demo" }
-            ];
+        return [
+            { id: 1, title: "Паста Карбонара", description: "Классическая итальянская паста с беконом и сливочным соусом.", image: "./images/pasta-carbonara.webp", time: "25 мин", difficulty: "medium", difficultyText: "Средняя", ingredients: "Спагетти 200г\nБекон 100г\nЯйца 2шт\nПармезан 50г\nЧерный перец", instructions: "Отварите спагетти...", type: "demo" },
+            { id: 2, title: "Тирамису", description: "Нежный итальянский десерт с маскарпоне и кофе.", image: "./images/tir.jpg", time: "40 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Маскарпоне 250г\nПеченье Савоярди\nКофе", instructions: "Смешайте...", type: "demo" },
+            { id: 3, title: "Рамен с курицей", description: "Японский суп с лапшой, курицей и яйцом.", image: "./images/ramen.webp", time: "35 мин", difficulty: "hard", difficultyText: "Сложная", ingredients: "Лапша, курица, яйцо, нори", instructions: "Сварите бульон...", type: "demo" },
+            { id: 4, title: "Салат Цезарь", description: "Хрустящий салат с курицей и пармезаном.", image: "./images/cezar.webp", time: "15 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Курица, салат, пармезан, сухарики", instructions: "Обжарьте курицу...", type: "demo" },
+            { id: 5, title: "Пицца Маргарита", description: "Томаты, моцарелла, базилик.", image: "./images/ppizzamargarita.webp", time: "30 мин", difficulty: "medium", difficultyText: "Средняя", ingredients: "Тесто, томатный соус, моцарелла", instructions: "Раскатайте...", type: "demo" },
+            { id: 6, title: "Борщ", description: "Насыщенный суп со свеклой и мясом.", image: "./images/borsh.webp", time: "60 мин", difficulty: "hard", difficultyText: "Сложная", ingredients: "Свекла, капуста, говядина", instructions: "Сварите бульон...", type: "demo" },
+            { id: 7, title: "Оладьи пышные", description: "Быстрые оладьи на кефире.", image: "./images/oladiipishnie.webp", time: "20 мин", difficulty: "easy", difficultyText: "Лёгкая", ingredients: "Кефир, мука, яйцо", instructions: "Смешайте, жарьте...", type: "demo" }
+        ];
         }
 
         function getAllRecipes() {
