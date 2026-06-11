@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск - Вкусный Блог</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="site-title">🍜 Вкусный Блог</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-button"><i class="fas fa-home"></i> На главную</a></li>
+                    <li><a href="favorites.html" class="nav-button"><i class="fas fa-heart"></i> Избранное</a></li>
+                    <li><a href="add-recipe.html" class="nav-button"><i class="fas fa-plus-circle"></i> Добавить рецепт</a></li>
+                    <li><a href="menu-generator.html" class="nav-button"><i class="fas fa-calendar-week"></i> Меню</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="container">
+            <h2>🔍 Результаты поиска</h2>
+            <div id="search-query" style="margin:1rem 0;"></div>
+            <div id="search-results-container" class="recipes-grid"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container"><div class="footer-content"><div class="footer-main"><p class="footer-slogan">Вкус, который объединяет 🌏</p><p class="footer-copyright">© 2025 Вкусный Блог.</p></div><div class="course-work"><p class="course-work-text">Курсовая работа Гончаров К.И.</p></div></div></div>
+    </footer>
+    <script src="https://kit.fontawesome.com/e755f937eb.js" crossorigin="anonymous"></script>
+    <script>
+        function getDemoRecipes() {
+            return [
+                { id: 1, title: "Паста Карбонара", description: "Классическая паста...", image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop", time: "25 мин", difficulty: "medium", difficultyText: "Средняя", ingredients: "Спагетти, бекон...", type: "demo" },
+                { id: 2, title: "Тирамису", description: "Нежный десерт...", image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop", time: "40 мин", difficulty: "easy", difficultyText: "Лёгкая", type: "demo" },
+                { id: 3, title: "Рамен с курицей", description: "Японский суп...", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop", time: "35 мин", difficulty: "hard", difficultyText: "Сложная", type: "demo" },
+                { id: 4, title: "Салат Цезарь", description: "Хрустящий салат...", image: "https://images.unsplash.com/photo-1550304943-4f24f54dd6c4?w=400&h=300&fit=crop", time: "15 мин", difficulty: "easy", difficultyText: "Лёгкая", type: "demo" },
+                { id: 5, title: "Пицца Маргарита", description: "Томаты, моцарелла...", image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop", time: "30 мин", difficulty: "medium", difficultyText: "Средняя", type: "demo" },
+                { id: 6, title: "Борщ", description: "Насыщенный суп...", image: "https://images.unsplash.com/photo-1588038904885-6b2b5f5a34d0?w=400&h=300&fit=crop", time: "60 мин", difficulty: "hard", difficultyText: "Сложная", type: "demo" },
+                { id: 7, title: "Оладьи пышные", description: "Быстрые оладьи...", image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=400&h=300&fit=crop", time: "20 мин", difficulty: "easy", difficultyText: "Лёгкая", type: "demo" }
+            ];
+        }
+        function getAllRecipes() {
+            const user = JSON.parse(localStorage.getItem('userRecipes')) || [];
+            return [...getDemoRecipes(), ...user];
+        }
+        function isFavorite(id) {
+            const fav = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+            return fav.some(r => r.id == id);
+        }
+        function toggleFavorite(id, title, desc, time, diff, diffText, img) {
+            let fav = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+            const exists = fav.find(r => r.id == id);
+            if (exists) fav = fav.filter(r => r.id != id);
+            else fav.push({ id, title, description: desc, time, difficulty: diff, difficultyText: diffText, image: img });
+            localStorage.setItem('favoriteRecipes', JSON.stringify(fav));
+            showNotification(exists ? 'Удалено из избранного' : 'Добавлено в избранное ❤️');
+            document.querySelectorAll(`.favorite-badge[data-id="${id}"]`).forEach(btn => {
+                if (exists) btn.classList.remove('active');
+                else btn.classList.add('active');
+            });
+        }
+        function showNotification(msg) {
+            const d = document.createElement('div');
+            d.innerText = msg;
+            d.style.cssText = `position:fixed; bottom:20px; right:20px; background:#f0c976; color:#1E1E2A; padding:12px 24px; border-radius:40px; z-index:999; font-weight:bold;`;
+            document.body.appendChild(d);
+            setTimeout(() => d.remove(), 2000);
+        }
+        function performSearch() {
+            const query = localStorage.getItem('searchQuery') || '';
+            document.getElementById('search-query').innerHTML = `<p>По запросу: <strong>${query}</strong></p>`;
+            const all = getAllRecipes();
+            const lowerQuery = query.toLowerCase();
+            const results = all.filter(r => r.title.toLowerCase().includes(lowerQuery) || (r.description && r.description.toLowerCase().includes(lowerQuery)));
+            const container = document.getElementById('search-results-container');
+            if (results.length === 0) {
+                container.innerHTML = '<div class="ad-banner">Ничего не найдено. Попробуйте другой запрос.</div>';
+                return;
+            }
+            container.innerHTML = results.map(recipe => {
+                const safeTitle = (recipe.title || '').replace(/'/g, "\\'");
+                const safeDesc = (recipe.description || '').replace(/'/g, "\\'");
+                return `
+                    <div class="recipe-card" data-id="${recipe.id}">
+                        <img src="${recipe.image}" class="recipe-image">
+                        ${recipe.type === 'user' ? '<div class="user-recipe-badge">Ваш рецепт</div>' : ''}
+                        <button class="favorite-badge ${isFavorite(recipe.id) ? 'active' : ''}" data-id="${recipe.id}">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">${recipe.title}</h3>
+                            <p class="recipe-description">${recipe.description}</p>
+                            <div class="recipe-meta">
+                                <span class="meta-item"><i class="fas fa-clock"></i> ${recipe.time}</span>
+                                <span class="difficulty-badge difficulty-${recipe.difficulty}">${recipe.difficultyText}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            // Навешиваем обработчики
+            container.querySelectorAll('.recipe-card').forEach(card => {
+                const recipeId = parseInt(card.getAttribute('data-id'));
+                const recipe = getAllRecipes().find(r => r.id === recipeId);
+                if (!recipe) return;
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.favorite-badge')) return;
+                    window.location.href = `recipe.html?id=${recipeId}`;
+                });
+                const favBtn = card.querySelector('.favorite-badge');
+                if (favBtn) {
+                    favBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        toggleFavorite(recipeId, recipe.title, recipe.description, recipe.time, recipe.difficulty, recipe.difficultyText, recipe.image);
+                    });
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', performSearch);
+        window.toggleFavorite = toggleFavorite;
+    </script>
+</body>
+</html>

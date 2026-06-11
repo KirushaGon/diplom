@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор меню - Вкусный Блог</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="site-title">🍽️ Генератор меню</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-button">Главная</a></li>
+                    <li><a href="favorites.html" class="nav-button">Избранное</a></li>
+                    <li><a href="add-recipe.html" class="nav-button">Добавить рецепт</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="container menu-generator-section">
+            <h2>📅 Сгенерируйте меню на неделю</h2>
+            <form id="menu-prefs" class="prefs-form">
+                <div class="form-group"><label>Количество дней:</label><select id="days-count" class="form-input"><option value="3">3 дня</option><option value="5">5 дней</option><option value="7" selected>7 дней</option></select></div>
+                <div class="form-group"><label>Макс. время:</label><select id="max-time" class="form-input"><option value="30">до 30 мин</option><option value="60">до 60 мин</option><option value="999">любое</option></select></div>
+                <div class="form-group"><label>Сложность:</label><div class="checkbox-group"><label><input type="checkbox" value="easy" checked> Лёгкая</label><label><input type="checkbox" value="medium" checked> Средняя</label><label><input type="checkbox" value="hard" checked> Сложная</label></div></div>
+                <div class="form-group"><label><input type="checkbox" id="only-fav"> Только избранные</label></div>
+                <button type="button" id="generate-menu-btn" class="submit-button">✨ Сгенерировать</button>
+            </form>
+            <div id="menu-result" class="week-menu"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container"><div class="footer-content"><div class="footer-main"><p class="footer-slogan">Вкус, который объединяет 🌏</p><p class="footer-copyright">© 2025 Вкусный Блог.</p></div><div class="course-work"><p class="course-work-text">Курсовая работа Гончаров К.И.</p></div></div></div>
+    </footer>
+    <script src="https://kit.fontawesome.com/e755f937eb.js" crossorigin="anonymous"></script>
+    <script>
+        const demo = [
+            { id:1, title:"Паста Карбонара", time:25, difficulty:"medium", difficultyText:"Средняя", description:"Классика итальянской кухни" },
+            { id:2, title:"Тирамису", time:40, difficulty:"easy", difficultyText:"Лёгкая", description:"Нежный десерт" },
+            { id:3, title:"Рамен с курицей", time:35, difficulty:"hard", difficultyText:"Сложная", description:"Японский суп" },
+            { id:4, title:"Салат Цезарь", time:15, difficulty:"easy", difficultyText:"Лёгкая", description:"Хрустящий салат" },
+            { id:5, title:"Пицца Маргарита", time:30, difficulty:"medium", difficultyText:"Средняя", description:"Итальянская пицца" },
+            { id:6, title:"Борщ", time:60, difficulty:"hard", difficultyText:"Сложная", description:"Насыщенный суп" },
+            { id:7, title:"Оладьи пышные", time:20, difficulty:"easy", difficultyText:"Лёгкая", description:"Быстрый завтрак" }
+        ];
+        function getAllRecipes() {
+            const user = JSON.parse(localStorage.getItem('userRecipes')) || [];
+            const mappedUser = user.map(r => ({ id: r.id, title: r.title, time: parseInt(r.time) || 30, difficulty: r.difficulty, difficultyText: r.difficultyText, description: r.description }));
+            return [...demo, ...mappedUser];
+        }
+        function generateMenu() {
+            const days = parseInt(document.getElementById('days-count').value);
+            const maxTime = parseInt(document.getElementById('max-time').value);
+            const selectedDiff = Array.from(document.querySelectorAll('#menu-prefs .checkbox-group input:checked')).map(cb => cb.value);
+            const onlyFav = document.getElementById('only-fav').checked;
+            let source = getAllRecipes();
+            if (onlyFav) {
+                const favs = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+                source = source.filter(r => favs.some(f => f.id == r.id));
+            }
+            let filtered = source.filter(r => {
+                let timeNum = typeof r.time === 'number' ? r.time : parseInt(r.time);
+                if (isNaN(timeNum)) timeNum = 999;
+                return timeNum <= maxTime && selectedDiff.includes(r.difficulty);
+            });
+            if (filtered.length === 0) { document.getElementById('menu-result').innerHTML = '<div class="ad-banner">Нет рецептов, измените фильтры</div>'; return; }
+            const shuffled = [...filtered].sort(() => 0.5 - Math.random());
+            let menu = [];
+            for (let i = 0; i < days && i < shuffled.length; i++) menu.push(shuffled[i]);
+            while (menu.length < days) menu.push(filtered[Math.floor(Math.random() * filtered.length)]);
+            const weekdays = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
+            let html = '<h3>Ваше меню:</h3>';
+            menu.forEach((r, idx) => {
+                html += `<div class="menu-day"><h4>${weekdays[idx % 7]}</h4><p><strong>${r.title}</strong> — ${r.time} мин • ${r.difficultyText}</p><small>${r.description?.substring(0,80)}</small></div>`;
+            });
+            html += `<button class="regenerate-btn" onclick="generateMenu()">🔄 Сгенерировать заново</button><div class="ad-banner"><div class="ad-placeholder"><i class="fas fa-ad"></i> Реклама</div></div>`;
+            document.getElementById('menu-result').innerHTML = html;
+        }
+        document.getElementById('generate-menu-btn').addEventListener('click', generateMenu);
+        document.addEventListener('DOMContentLoaded', generateMenu);
+    </script>
+</body>
+</html>
