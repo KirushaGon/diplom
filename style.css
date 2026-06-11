@@ -34,7 +34,6 @@ body {
     padding: 0 20px;
 }
 
-/* ===== ШАПКА – ВАШ ГРАДИЕНТ ===== */
 .header {
     background: linear-gradient(135deg, #f0c976 0%, #f5cf69 100%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -85,7 +84,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== ПОИСК ===== */
 .search-section {
     display: flex;
     flex-direction: column;
@@ -139,7 +137,6 @@ body {
     background: #e0b84d;
 }
 
-/* ===== СЕТКА РЕЦЕПТОВ ===== */
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -254,7 +251,6 @@ body {
 .difficulty-medium { background: #FFF3E0; color: #F57C00; }
 .difficulty-hard { background: #FFEBEE; color: #C62828; }
 
-/* ===== РЕКЛАМНЫЕ БЛОКИ ===== */
 .ad-sidebar {
     background: #FFF8E1;
     border: 1px solid #f0c976;
@@ -305,7 +301,6 @@ body {
     }
 }
 
-/* ===== БЛОК РЕКОМЕНДАЦИЙ ===== */
 .recommendations-title {
     font-size: 1.8rem;
     margin: 2rem 0 1rem;
@@ -314,7 +309,6 @@ body {
     display: inline-block;
 }
 
-/* ===== ФУТЕР – ЧЁРНЫЙ ===== */
 .footer {
     background: #0a0a0a;
     color: #cccccc;
@@ -344,7 +338,6 @@ body {
     color: #888;
 }
 
-/* ===== ФОРМА ДОБАВЛЕНИЯ ===== */
 .add-recipe-form {
     background: white;
     border-radius: 24px;
@@ -387,7 +380,6 @@ body {
     cursor: pointer;
 }
 
-/* ===== ГЕНЕРАТОР МЕНЮ ===== */
 .menu-generator-section {
     max-width: 900px;
     margin: 0 auto;
@@ -431,7 +423,6 @@ body {
     background: #e0b84d;
 }
 
-/* ===== СТРАНИЦА ИЗБРАННОГО ===== */
 .favorites-section {
     padding: 3rem 0;
     min-height: 70vh;

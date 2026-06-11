@@ -106,7 +106,6 @@
             setTimeout(() => d.remove(), 2500);
         }
 
-        // ----- РЕКОМЕНДАЦИИ -----
         function getRecommendations() {
             const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
             const allRecipes = getAllRecipes();
@@ -137,7 +136,6 @@
             return candidateScores.slice(0, 6).map(c => c.recipe);
         }
 
-        // ----- ОТРИСОВКА КАРТОЧЕК -----
         function renderRecipes(containerId, recipes, limit = 6) {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -164,19 +162,17 @@
                 `;
             }).join('');
 
-            // Навешиваем обработчики
+
             container.querySelectorAll('.recipe-card').forEach(card => {
                 const recipeId = parseInt(card.getAttribute('data-id'));
                 const recipe = getAllRecipes().find(r => r.id === recipeId);
                 if (!recipe) return;
 
-                // Клик по карточке (переход на рецепт)
                 card.addEventListener('click', (e) => {
                     if (e.target.closest('.favorite-badge')) return;
                     window.location.href = `recipe.html?id=${recipeId}`;
                 });
 
-                // Клик по сердечку
                 const favBtn = card.querySelector('.favorite-badge');
                 if (favBtn) {
                     favBtn.addEventListener('click', (e) => {
@@ -205,7 +201,6 @@
             renderRecipes('popular-grid', popular, 6);
         }
 
-        // ----- ПОИСК -----
         document.getElementById('search-button').addEventListener('click', () => {
             const query = document.getElementById('search-input').value.trim();
             if (query) {
@@ -216,7 +211,6 @@
         document.getElementById('search-input').addEventListener('keypress', e => e.key === 'Enter' && document.getElementById('search-button').click());
 
         document.addEventListener('DOMContentLoaded', loadHomePage);
-        // Делаем функцию глобальной на случай, если понадобится из консоли
         window.toggleFavorite = toggleFavorite;
     </script>
 </body>

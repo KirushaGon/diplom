@@ -87,7 +87,6 @@
                 `;
             }).join('');
 
-            // Навешиваем обработчики: переход по карточке (кроме кнопки удаления)
             document.querySelectorAll('.favorite-recipe-card').forEach(card => {
                 const recipeId = parseInt(card.getAttribute('data-id'));
                 card.addEventListener('click', (e) => {

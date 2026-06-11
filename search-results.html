@@ -102,7 +102,6 @@
                     </div>
                 `;
             }).join('');
-            // Навешиваем обработчики
             container.querySelectorAll('.recipe-card').forEach(card => {
                 const recipeId = parseInt(card.getAttribute('data-id'));
                 const recipe = getAllRecipes().find(r => r.id === recipeId);
