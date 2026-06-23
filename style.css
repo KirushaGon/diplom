@@ -4,11 +4,9 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html {
     scroll-behavior: smooth;
-    overflow-x: hidden; 
-    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
@@ -19,7 +17,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    max-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,7 +34,6 @@ body {
     flex-direction: column;
     padding: 1rem 0;
     overflow-x: hidden;
-    max-width: 100vw;
 }
 
 .container {
@@ -49,7 +51,6 @@ body {
     top: 0;
     z-index: 100;
     transition: all 0.3s ease;
-    overflow: hidden;
 }
 
 .header-container {
@@ -129,8 +130,6 @@ body {
     justify-content: center;
     padding: 1.5rem 15px;
     width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
 }
 
 .search-container {
@@ -159,8 +158,8 @@ body {
     font-size: 1rem;
     background: transparent;
     min-width: 0;
-    transition: all 0.3s ease;
     width: 100%;
+    transition: all 0.3s ease;
 }
 
 .search-input::placeholder {
@@ -214,7 +213,6 @@ body {
     animation: fadeInUp 0.5s ease forwards;
     opacity: 0;
     transform: translateY(20px);
-    max-width: 100%;
 }
 
 .recipe-card:nth-child(1) { animation-delay: 0.05s; }
@@ -377,7 +375,6 @@ body {
     text-align: center;
     margin-bottom: 1.2rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 100%;
 }
 
 .ad-sidebar:hover {
@@ -393,7 +390,6 @@ body {
     text-align: center;
     margin: 1.5rem 0 1rem;
     transition: all 0.3s ease;
-    max-width: 100%;
 }
 
 .ad-banner:hover {
@@ -422,8 +418,6 @@ body {
     grid-template-columns: 1fr 280px;
     gap: 1.5rem;
     align-items: start;
-    max-width: 100%;
-    overflow: hidden;
 }
 .home-main {
     min-width: 0;
@@ -489,7 +483,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     transition: all 0.3s ease;
-    max-width: 100%;
 }
 .add-recipe-form:hover {
     box-shadow: 0 12px 40px rgba(0,0,0,0.08);
@@ -504,7 +497,6 @@ body {
     font-size: 0.95rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: #fafafa;
-    max-width: 100%;
 }
 
 .form-input:hover, .form-select:hover, .form-textarea:hover {
@@ -565,7 +557,6 @@ body {
     margin-top: 1.5rem;
 }
 
-/* ===== ГЕНЕРАТОР МЕНЮ ===== */
 .menu-generator-section {
     max-width: 900px;
     margin: 0 auto;
@@ -577,7 +568,6 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
-    max-width: 100%;
 }
 .prefs-form:hover {
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
@@ -1033,7 +1023,6 @@ body {
         font-size: 0.6rem;
     }
 
-    /* Уменьшаем анимации на телефонах для производительности */
     .recipe-card, .favorite-recipe-card, .menu-day {
         animation-duration: 0.3s;
     }
