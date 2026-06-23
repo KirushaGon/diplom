@@ -1,12 +1,14 @@
+/* ===== ОБНУЛЕНИЕ ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,43 +16,35 @@ body {
     background-color: #f8f6f0;
     color: #1E1E2A;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
-    overflow-x: hidden;
-}
-
+/* ===== КОНТЕЙНЕРЫ ===== */
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 15px;
-    overflow-x: hidden;
+    padding: 0 20px;
+    width: 100%;
 }
 
+.main-content {
+    flex: 1 0 auto;
+    padding: 20px 0;
+    width: 100%;
+}
+
+/* ===== ШАПКА ===== */
 .header {
     background: linear-gradient(135deg, #f0c976 0%, #f5cf69 100%);
     box-shadow: 0 4px 20px rgba(240, 201, 118, 0.3);
-    padding: 0.8rem 0;
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: all 0.3s ease;
+    width: 100%;
 }
 
 .header-container {
@@ -58,22 +52,18 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 10px;
 }
 
 .site-title {
-    font-size: 1.8rem;
-    color: #1E1E2A;
+    font-size: 28px;
     font-weight: 800;
+    color: #1E1E2A;
     letter-spacing: -0.5px;
-    transition: transform 0.3s ease;
     white-space: nowrap;
 }
 
-.site-title:hover {
-    transform: scale(1.02);
-}
-
+/* ===== НАВИГАЦИЯ ===== */
 .nav {
     display: flex;
     align-items: center;
@@ -82,169 +72,130 @@ body {
 .nav-list {
     display: flex;
     list-style: none;
-    gap: 0.5rem;
+    gap: 8px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    align-items: center;
 }
 
 .nav-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    background-color: rgba(0, 0, 0, 0.12);
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.1);
     color: #1E1E2A;
     text-decoration: none;
     border-radius: 40px;
     font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
+    font-size: 14px;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .nav-button:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.nav-button:active {
-    transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .nav-button i {
-    font-size: 0.9rem;
-    transition: transform 0.3s ease;
+    font-size: 14px;
 }
 
-.nav-button:hover i {
-    transform: scale(1.1);
-}
-
+/* ===== ПОИСК ===== */
 .search-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 15px;
     width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .search-container {
     display: flex;
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     background: white;
-    border-radius: 60px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    border-radius: 50px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .search-container:focus-within {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(240, 201, 118, 0.2);
     border-color: #f0c976;
+    box-shadow: 0 8px 30px rgba(240, 201, 118, 0.2);
+    transform: translateY(-2px);
 }
 
 .search-input {
     flex: 1;
-    padding: 0.8rem 1.2rem;
+    padding: 14px 24px;
     border: none;
     outline: none;
-    font-size: 1rem;
+    font-size: 16px;
     background: transparent;
     min-width: 0;
     width: 100%;
-    transition: all 0.3s ease;
 }
 
 .search-input::placeholder {
     color: #aaa;
-    transition: color 0.3s ease;
-}
-
-.search-input:focus::placeholder {
-    color: #ccc;
 }
 
 .search-button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
+    gap: 8px;
+    padding: 14px 28px;
     background: #f0c976;
     border: none;
     color: #1E1E2A;
     cursor: pointer;
     font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 15px;
+    transition: all 0.3s ease;
     white-space: nowrap;
-    font-size: 0.95rem;
 }
 
 .search-button:hover {
     background: #e0b84d;
-    transform: scale(1.02);
 }
 
-.search-button:active {
-    transform: scale(0.95);
-}
-
+/* ===== СЕТКА РЕЦЕПТОВ ===== */
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 24px;
+    margin-top: 24px;
+    width: 100%;
 }
 
+/* ===== КАРТОЧКА РЕЦЕПТА ===== */
 .recipe-card {
     background: white;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.recipe-card:nth-child(1) { animation-delay: 0.05s; }
-.recipe-card:nth-child(2) { animation-delay: 0.10s; }
-.recipe-card:nth-child(3) { animation-delay: 0.15s; }
-.recipe-card:nth-child(4) { animation-delay: 0.20s; }
-.recipe-card:nth-child(5) { animation-delay: 0.25s; }
-.recipe-card:nth-child(6) { animation-delay: 0.30s; }
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .recipe-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
 }
 
 .recipe-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
 }
 
-.recipe-card:hover .recipe-image {
-    transform: scale(1.05);
-}
-
+/* ===== КНОПКА ЛАЙКА ===== */
 .favorite-badge {
     position: absolute;
     top: 12px;
@@ -256,77 +207,59 @@ body {
     border-radius: 50%;
     cursor: pointer;
     color: #ddd;
-    font-size: 1.1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
 }
 
 .favorite-badge:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.favorite-badge:active {
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 .favorite-badge.active {
     color: #f0c976;
-    background: rgba(255, 255, 255, 0.98);
-    animation: heartPop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes heartPop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
+/* ===== БЕЙДЖ "ВАШ РЕЦЕПТ" ===== */
 .user-recipe-badge {
     position: absolute;
     top: 12px;
     left: 12px;
     background: #f0c976;
     color: #1E1E2A;
-    padding: 0.2rem 0.8rem;
+    padding: 4px 12px;
     border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: bold;
+    font-size: 11px;
+    font-weight: 700;
     z-index: 2;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ===== КОНТЕНТ КАРТОЧКИ ===== */
 .recipe-content {
-    padding: 1.2rem;
+    padding: 16px;
 }
 
 .recipe-title {
-    font-size: 1.15rem;
-    margin-bottom: 0.4rem;
+    font-size: 18px;
     font-weight: 700;
-    transition: color 0.3s ease;
+    margin-bottom: 6px;
     word-wrap: break-word;
 }
 
-.recipe-card:hover .recipe-title {
-    color: #f0c976;
-}
-
 .recipe-description {
-    color: #5a5a6e;
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.5;
 }
 
 .recipe-meta {
@@ -334,47 +267,43 @@ body {
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #f0f0f0;
-    padding-top: 0.6rem;
-    margin-top: 0.3rem;
+    padding-top: 12px;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    gap: 8px;
 }
 
 .meta-item {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.8rem;
-    color: #5a5a6e;
+    gap: 6px;
+    font-size: 13px;
+    color: #666;
 }
 
 .meta-item i {
-    transition: transform 0.3s ease;
-}
-
-.recipe-card:hover .meta-item i {
-    transform: rotate(-10deg) scale(1.1);
+    color: #f0c976;
 }
 
 .difficulty-badge {
-    padding: 0.15rem 0.6rem;
+    padding: 3px 12px;
     border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-size: 11px;
+    font-weight: 700;
 }
+
 .difficulty-easy { background: #E8F5E9; color: #2E7D32; }
 .difficulty-medium { background: #FFF3E0; color: #F57C00; }
 .difficulty-hard { background: #FFEBEE; color: #C62828; }
 
+/* ===== РЕКЛАМНЫЕ БЛОКИ ===== */
 .ad-sidebar {
     background: #FFF8E1;
     border: 2px solid #f0c976;
     border-radius: 16px;
-    padding: 0.8rem;
+    padding: 16px;
     text-align: center;
-    margin-bottom: 1.2rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
 }
 
 .ad-sidebar:hover {
@@ -386,208 +315,193 @@ body {
     background: #FFF8E1;
     border: 2px solid #f0c976;
     border-radius: 16px;
-    padding: 0.8rem;
+    padding: 16px;
     text-align: center;
-    margin: 1.5rem 0 1rem;
+    margin: 24px 0 16px;
     transition: all 0.3s ease;
-}
-
-.ad-banner:hover {
-    transform: scale(1.01);
-    box-shadow: 0 8px 25px rgba(240, 201, 118, 0.15);
 }
 
 .ad-placeholder {
-    font-size: 0.8rem;
+    font-size: 13px;
     color: #B8860B;
 }
+
 .ad-placeholder i {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
+    font-size: 24px;
+    margin-bottom: 4px;
     display: block;
-    animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
+/* ===== ГЛАВНАЯ С САЙДБАРОМ ===== */
 .home-grid {
     display: grid;
     grid-template-columns: 1fr 280px;
-    gap: 1.5rem;
+    gap: 24px;
     align-items: start;
+    margin-top: 0;
 }
+
 .home-main {
     min-width: 0;
 }
+
 .sidebar {
     position: sticky;
-    top: 90px;
+    top: 100px;
 }
 
+/* ===== ЗАГОЛОВКИ БЛОКОВ ===== */
 .recommendations-title {
-    font-size: 1.5rem;
-    margin: 1.5rem 0 0.8rem;
-    padding-bottom: 0.4rem;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
     border-bottom: 3px solid #f0c976;
     display: inline-block;
-    transition: all 0.3s ease;
 }
 
-.recommendations-title:hover {
-    transform: translateX(5px);
-    color: #f0c976;
-}
-
+/* ===== ФУТЕР ===== */
 .footer {
     background: #0a0a0a;
-    color: #cccccc;
-    padding: 1.5rem 0;
-    margin-top: 2rem;
-    transition: all 0.3s ease;
+    color: #ccc;
+    padding: 24px 0;
+    margin-top: 40px;
+    flex-shrink: 0;
+    width: 100%;
 }
+
 .footer-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 12px;
 }
-.footer-main {
-    text-align: left;
-}
+
 .footer-slogan {
-    font-size: 0.85rem;
+    font-size: 14px;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
 }
-.footer-slogan:hover {
-    opacity: 1;
-}
+
 .footer-copyright {
-    font-size: 0.75rem;
+    font-size: 12px;
     opacity: 0.6;
 }
+
 .course-work-text {
-    font-size: 0.7rem;
+    font-size: 11px;
     opacity: 0.5;
     color: #888;
 }
 
+/* ===== ФОРМЫ ===== */
 .add-recipe-form {
     background: white;
     border-radius: 24px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     max-width: 800px;
     margin: 0 auto;
-    transition: all 0.3s ease;
-}
-.add-recipe-form:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
     border: 2px solid #e8e8e8;
     border-radius: 12px;
-    padding: 0.7rem 1rem;
+    padding: 10px 16px;
     width: 100%;
     font-family: inherit;
-    font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 15px;
+    transition: all 0.3s ease;
     background: #fafafa;
 }
 
-.form-input:hover, .form-select:hover, .form-textarea:hover {
-    background: white;
-    border-color: #d0d0d0;
-}
-
-.form-input:focus, .form-select:focus, .form-textarea:focus {
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
     border-color: #f0c976;
     outline: none;
-    background: white;
     box-shadow: 0 0 0 4px rgba(240, 201, 118, 0.1);
-    transform: translateY(-2px);
+    background: white;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
 }
 
 .submit-button {
     background: #f0c976;
     color: #1E1E2A;
     border: none;
-    padding: 0.7rem 1.5rem;
+    padding: 10px 24px;
     border-radius: 40px;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 0.95rem;
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 
 .submit-button:hover {
     background: #e0b84d;
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(240, 201, 118, 0.3);
-}
-
-.submit-button:active {
-    transform: scale(0.95);
 }
 
 .cancel-button {
     background: #e8e8e8;
     color: #333;
     border: none;
-    padding: 0.7rem 1.5rem;
+    padding: 10px 24px;
     border-radius: 40px;
     cursor: pointer;
-    font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 
 .cancel-button:hover {
     background: #d5d5d5;
-    transform: translateY(-2px);
 }
 
-.form-actions {
-    display: flex;
-    gap: 0.8rem;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-}
-
+/* ===== ГЕНЕРАТОР МЕНЮ ===== */
 .menu-generator-section {
     max-width: 900px;
     margin: 0 auto;
 }
+
 .prefs-form {
     background: white;
-    padding: 1.2rem;
+    padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
-}
-.prefs-form:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 1rem;
-}
 .checkbox-group {
     display: flex;
-    gap: 0.8rem;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
 .checkbox-group label {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 6px;
     cursor: pointer;
-    padding: 0.3rem 0.8rem;
+    padding: 4px 12px;
     border-radius: 20px;
     background: #f5f5f5;
     transition: all 0.3s ease;
@@ -607,32 +521,15 @@ body {
 .week-menu {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 12px;
 }
+
 .menu-day {
     background: white;
     border-radius: 16px;
-    padding: 0.8rem;
+    padding: 16px;
     border-left: 5px solid #f0c976;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: slideIn 0.4s ease forwards;
-    opacity: 0;
-    transform: translateX(-20px);
-}
-
-.menu-day:nth-child(1) { animation-delay: 0.05s; }
-.menu-day:nth-child(2) { animation-delay: 0.10s; }
-.menu-day:nth-child(3) { animation-delay: 0.15s; }
-.menu-day:nth-child(4) { animation-delay: 0.20s; }
-.menu-day:nth-child(5) { animation-delay: 0.25s; }
-.menu-day:nth-child(6) { animation-delay: 0.30s; }
-.menu-day:nth-child(7) { animation-delay: 0.35s; }
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    transition: all 0.3s ease;
 }
 
 .menu-day:hover {
@@ -640,454 +537,332 @@ body {
     box-shadow: 0 4px 15px rgba(240, 201, 118, 0.15);
 }
 
-.menu-day h4 {
-    margin-bottom: 0.3rem;
-    font-size: 1rem;
-}
 .regenerate-btn {
     background: #f0c976;
     border: none;
-    padding: 0.5rem 1.2rem;
+    padding: 8px 20px;
     border-radius: 30px;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.regenerate-btn:hover {
-    background: #e0b84d;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 4px 15px rgba(240, 201, 118, 0.3);
-}
-.regenerate-btn:active {
-    transform: scale(0.95);
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-.favorites-section {
-    padding: 2rem 0;
-    min-height: 60vh;
+.regenerate-btn:hover {
+    background: #e0b84d;
+    transform: translateY(-2px);
 }
+
+/* ===== ИЗБРАННОЕ ===== */
+.favorites-section {
+    padding: 24px 0;
+}
+
 .favorites-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-.empty-favorites {
-    text-align: center;
-    padding: 3rem 1rem;
-    display: none;
-    animation: fadeIn 0.5s ease;
+    gap: 24px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.empty-favorites i {
-    font-size: 3rem;
-    color: #ddd;
-    transition: all 0.3s ease;
-}
-.empty-favorites:hover i {
-    transform: scale(1.1);
-    color: #f0c976;
-}
-.remove-favorite-btn {
-    background: rgba(255,255,255,0.95);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    color: #e74c3c;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.remove-favorite-btn:hover {
-    transform: scale(1.15);
-    background: white;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
-}
-.remove-favorite-btn:active {
-    transform: scale(0.9);
-}
 .favorite-recipe-card {
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
+    transition: all 0.3s ease;
 }
-.favorite-recipe-card:nth-child(1) { animation-delay: 0.05s; }
-.favorite-recipe-card:nth-child(2) { animation-delay: 0.10s; }
-.favorite-recipe-card:nth-child(3) { animation-delay: 0.15s; }
 
 .favorite-recipe-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
 }
 
 .favorite-recipe-image {
     position: relative;
     height: 180px;
 }
+
 .recipe-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
-}
-.favorite-recipe-card:hover .recipe-img {
-    transform: scale(1.05);
-}
-.favorite-recipe-content {
-    padding: 1rem;
 }
 
-@media (max-width: 1024px) {
+.remove-favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #e74c3c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.remove-favorite-btn:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+.favorite-recipe-content {
+    padding: 16px;
+}
+
+/* ======================================================== */
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+/* ======================================================== */
+
+/* Планшеты */
+@media (max-width: 992px) {
     .home-grid {
         grid-template-columns: 1fr 240px;
-        gap: 1.5rem;
+        gap: 20px;
     }
+    
     .recipes-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 1.2rem;
+        gap: 20px;
     }
 }
 
+/* Планшеты вертикально и большие телефоны */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.5rem;
+        gap: 8px;
     }
+    
     .site-title {
-        font-size: 1.5rem;
+        font-size: 24px;
         text-align: center;
     }
-    .site-title:hover {
-        transform: none;
-    }
+    
     .nav {
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 0.3rem;
-        scrollbar-width: none;
+        padding-bottom: 4px;
     }
+    
     .nav::-webkit-scrollbar {
         display: none;
     }
+    
     .nav-list {
-        justify-content: center;
-        gap: 0.4rem;
         flex-wrap: nowrap;
-        padding: 0 0.2rem;
+        justify-content: center;
     }
+    
     .nav-button {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.8rem;
-        white-space: nowrap;
+        font-size: 12px;
+        padding: 6px 12px;
     }
-    .nav-button i {
-        font-size: 0.8rem;
-    }
-
-    .search-section {
-        padding: 1rem 10px;
-    }
+    
     .search-container {
-        border-radius: 40px;
         flex-direction: column;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 30px;
     }
+    
     .search-input {
-        padding: 0.7rem 1rem;
-        font-size: 0.95rem;
-        border-radius: 40px 40px 0 0;
-        width: 100%;
+        padding: 12px 16px;
+        border-radius: 30px 30px 0 0;
     }
+    
     .search-button {
-        padding: 0.7rem 1rem;
-        font-size: 0.9rem;
-        border-radius: 0 0 40px 40px;
+        padding: 12px 16px;
+        border-radius: 0 0 30px 30px;
         justify-content: center;
         width: 100%;
     }
-
+    
     .home-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 16px;
     }
+    
     .sidebar {
         position: static;
-        margin-top: 1rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
+        gap: 12px;
+        margin-top: 16px;
     }
+    
     .ad-sidebar {
         margin-bottom: 0;
     }
-
+    
     .recipes-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
     }
-
+    
     .recipe-image {
         height: 160px;
     }
-    .recipe-title {
-        font-size: 1rem;
-    }
-    .recipe-description {
-        font-size: 0.8rem;
-    }
-
-    .recommendations-title {
-        font-size: 1.3rem;
-    }
-
+    
     .favorites-container {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
     }
-    .favorite-recipe-image {
-        height: 140px;
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
-
-    .add-recipe-form {
-        padding: 1rem;
-        margin: 0 0.5rem;
-    }
+    
     .form-actions {
         flex-direction: column;
     }
+    
     .form-actions button {
         width: 100%;
         justify-content: center;
     }
-    .form-row {
-        display: block;
-    }
-
-    .prefs-form {
-        padding: 1rem;
-    }
+    
     .checkbox-group {
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 6px;
     }
-
+    
     .footer-content {
         flex-direction: column;
         text-align: center;
-        gap: 0.5rem;
-    }
-    .footer-main {
-        text-align: center;
-    }
-    .course-work-text {
-        text-align: center;
     }
 }
 
+/* Телефоны */
 @media (max-width: 480px) {
     .container {
-        padding: 0 8px;
-    }
-
-    .site-title {
-        font-size: 1.2rem;
+        padding: 0 12px;
     }
     
-    .nav-list {
-        gap: 0.3rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .site-title {
+        font-size: 20px;
     }
     
     .nav-button {
-        font-size: 0.65rem;
-        padding: 0.3rem 0.6rem;
-        white-space: nowrap;
+        font-size: 11px;
+        padding: 4px 10px;
     }
+    
     .nav-button i {
-        font-size: 0.65rem;
-        margin-right: 0.15rem;
+        font-size: 11px;
     }
-
+    
     .search-input {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.85rem;
+        font-size: 14px;
+        padding: 10px 14px;
     }
+    
     .search-button {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 13px;
+        padding: 10px 14px;
     }
-
+    
     .recipes-grid {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 12px;
     }
-
-    .recipe-card {
-        border-radius: 16px;
-    }
+    
     .recipe-image {
         height: 140px;
     }
-    .recipe-content {
-        padding: 0.8rem;
-    }
+    
     .recipe-title {
-        font-size: 0.95rem;
+        font-size: 16px;
     }
-
-    .recipe-card:hover {
-        transform: translateY(-4px);
+    
+    .recipe-description {
+        font-size: 13px;
     }
-
+    
     .sidebar {
         grid-template-columns: 1fr;
-        gap: 0.6rem;
+        gap: 10px;
     }
-
+    
     .favorites-container {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 12px;
     }
+    
     .favorite-recipe-image {
         height: 140px;
     }
-    .favorite-recipe-content {
-        padding: 0.8rem;
-    }
-    .favorite-recipe-card:hover {
-        transform: translateY(-4px);
-    }
-
+    
     .add-recipe-form {
-        padding: 0.8rem;
-        margin: 0 0.2rem;
+        padding: 16px;
         border-radius: 16px;
     }
-    .form-input, .form-select, .form-textarea {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.8rem;
-    }
-
-    .ad-banner, .ad-sidebar {
-        padding: 0.6rem;
-        border-radius: 12px;
-    }
-    .ad-placeholder {
-        font-size: 0.7rem;
-    }
-    .ad-placeholder i {
-        font-size: 1.2rem;
-    }
-
-    .menu-day {
-        padding: 0.6rem;
-        border-radius: 12px;
-    }
-    .menu-day h4 {
-        font-size: 0.9rem;
-    }
+    
     .prefs-form {
-        padding: 0.8rem;
+        padding: 16px;
         border-radius: 16px;
     }
-
+    
+    .menu-day {
+        padding: 12px;
+    }
+    
+    .ad-banner,
+    .ad-sidebar {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
     .footer {
-        padding: 1rem 0;
-    }
-    .footer-slogan {
-        font-size: 0.75rem;
-    }
-    .footer-copyright {
-        font-size: 0.65rem;
-    }
-    .course-work-text {
-        font-size: 0.6rem;
-    }
-
-    .recipe-card, .favorite-recipe-card, .menu-day {
-        animation-duration: 0.3s;
+        padding: 16px 0;
     }
 }
 
+/* Очень маленькие телефоны */
 @media (max-width: 380px) {
     .site-title {
-        font-size: 1rem;
+        font-size: 18px;
     }
+    
     .nav-button {
-        font-size: 0.55rem;
-        padding: 0.2rem 0.4rem;
+        font-size: 10px;
+        padding: 3px 8px;
     }
-    .search-input {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.6rem;
-    }
-    .search-button {
-        font-size: 0.75rem;
-        padding: 0.5rem 0.6rem;
-    }
-    .recipe-title {
-        font-size: 0.85rem;
-    }
-    .recipe-description {
-        font-size: 0.75rem;
-    }
-    .meta-item {
-        font-size: 0.7rem;
-    }
-    .difficulty-badge {
-        font-size: 0.6rem;
-    }
-    .recipe-content {
-        padding: 0.6rem;
-    }
+    
     .recipe-image {
         height: 120px;
     }
+    
     .favorite-recipe-image {
         height: 120px;
     }
 }
 
+/* ===== УЛУЧШЕНИЯ ДЛЯ ТАЧ-УСТРОЙСТВ ===== */
 @media (hover: none) {
     .recipe-card:hover {
         transform: none;
     }
+    
     .recipe-card:active {
         transform: scale(0.98);
     }
+    
     .nav-button:active {
         transform: scale(0.95);
     }
+    
     .favorite-badge:active {
         transform: scale(0.9);
     }
-    .recipe-card:hover .recipe-image {
-        transform: none;
-    }
-    .recipe-card:hover .recipe-title {
-        color: inherit;
-    }
 }
 
+/* ===== СКРОЛЛБАР ===== */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -1101,7 +876,6 @@ body {
 ::-webkit-scrollbar-thumb {
     background: #f0c976;
     border-radius: 10px;
-    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
